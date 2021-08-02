@@ -365,3 +365,21 @@ CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'  # Back
 # 接口权限
 INTERFACE_PERMISSION = locals().get("INTERFACE_PERMISSION", False)
 DJANGO_CELERY_BEAT_TZ_AWARE = False
+
+
+# ================================================= #
+# ************** 发送邮件配置  ************** #
+# ================================================= #
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = False   # 是否使用TLS安全传输协议
+EMAIL_USE_SSL = True    # 是否使用SSL加密，qq企业邮箱要求使用
+# SMTP地址
+EMAIL_HOST = 'smtp.qq.com'
+# SMTP端口
+EMAIL_PORT = 465
+# 自己的邮箱
+EMAIL_HOST_USER = '1169794078@qq.com'
+# 自己的邮箱授权码，非密码
+EMAIL_HOST_PASSWORD = 'pjirsithwtjejigg'
+# 邮件标题前缀
+EMAIL_SUBJECT_PREFIX = '[质量管理平台]'

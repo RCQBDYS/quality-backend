@@ -44,3 +44,6 @@ API_LOG_ENABLE = True
 API_LOG_METHODS = ['POST', 'DELETE', 'PUT'] # 'ALL' or ['POST', 'DELETE']
 # 接口权限
 INTERFACE_PERMISSION = True
+
+
+

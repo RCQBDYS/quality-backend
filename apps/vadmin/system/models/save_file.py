@@ -1,7 +1,7 @@
 import os
 import uuid
 
-from django.db.models import CharField, FileField,BooleanField
+from django.db.models import CharField, FileField, BooleanField, ForeignKey, CASCADE
 from django.utils import timezone
 
 from ...op_drf.models import CoreModel
@@ -20,6 +20,8 @@ class SaveFile(CoreModel):
     oss_url = CharField(max_length=200, verbose_name="OSS地址", null=True, blank=True)
     status = BooleanField(default=True, verbose_name="文件是否存在")
     file = FileField(verbose_name="文件URL", upload_to=files_path, )
+    # fileId = ForeignKey(to='quality.Questions', on_delete=CASCADE, default=False, verbose_name="附件id",
+    #                     db_constraint=False, null=True, blank=True)
 
     class Meta:
         verbose_name = '文件管理'

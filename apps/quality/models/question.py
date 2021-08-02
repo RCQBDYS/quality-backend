@@ -22,10 +22,11 @@ class Questions(CoreModel):
     # 关闭与否
     title_status = CharField(max_length=8, verbose_name='问题状态', help_text='问题状态')
     black_point = CharField(max_length=8, verbose_name='黑点', help_text='黑点', null=True)
-    question_description = CharField(max_length=128, verbose_name='问题描述', help_text='问题描述')
-    question_schedule = CharField(max_length=128, verbose_name='问题进度', help_text='问题进度')
-    attachment = TextField(verbose_name='附件', help_text='附件', null=True)
-    # w
+    question_description = TextField(verbose_name='问题描述', help_text='问题描述')
+    question_schedule = TextField(verbose_name='问题进度', help_text='问题进度')
+    attachment = IntegerField(verbose_name='附件', help_text='附件', null=True)
+    attachmentName = CharField(max_length=128, verbose_name='附件名称', help_text='附件名称', null=True)
+    # 附件关联
 
     class Meta:
         verbose_name = '质量管理'
