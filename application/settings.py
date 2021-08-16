@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = ')ns9h-%fl^&ro=+-vgl*b-!+a%2=tuwc#&xbpmcavj0*ufpyjh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ALLOWED_HOSTS
 
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_swagger',
     'corsheaders',
     'captcha',
     'django_celery_beat',
@@ -293,35 +292,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'EXCEPTION_HANDLER': 'apps.vadmin.utils.exceptions.op_exception_handler',
 }
-
-# ================================================= #
-# ************** SWAGGER_SETTINGS 配置************** #
-# =================================================
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        "basic": {
-            'type': 'apiKey',
-            'in': 'header',
-            'name': 'Authorization',
-        }
-    },
-    # 如果需要登录才能够查看接口文档, 登录的链接使用restframework自带的.
-    'LOGIN_URL': 'rest_framework:login',
-    'LOGOUT_URL': 'rest_framework:logout',
-    # 'DOC_EXPANSION': None,
-    # 'SHOW_REQUEST_HEADERS':True,
-    # 'USE_SESSION_AUTH': True,
-    # 'DOC_EXPANSION': 'list',
-    # 接口文档中方法列表以首字母升序排列
-    'APIS_SORTER': 'alpha',
-    # 如果支持json提交, 则接口文档中包含json输入框
-    'JSON_EDITOR': True,
-    # 方法列表字母排序
-    'OPERATIONS_SORTER': 'alpha',
-    'VALIDATOR_URL': None,
-    'SHOW_REQUEST_HEADERS': True,
-}
-
 # ================================================= #
 # ************** 登录方式配置  ************** #
 # ================================================= #

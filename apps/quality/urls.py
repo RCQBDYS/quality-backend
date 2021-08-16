@@ -12,7 +12,7 @@ router.register(r'origin', QOModelViewSet)
 
 urlpatterns = [
     # 获取问题详情
-    re_path('question/sendEmail/', QuestionsModelViewSet.as_view({'put': 'send_text'})),
+    re_path('question/sendEmail/', QuestionsModelViewSet.as_view({'put': 'send_email'})),
 ]
 
 urlpatterns += router.urls

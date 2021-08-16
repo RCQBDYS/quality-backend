@@ -3,6 +3,8 @@ import os
 from django.conf import settings
 from django.core.cache import cache
 from django.db.models import Q
+from django.http import FileResponse,HttpResponse
+from dns.message import make_response
 from rest_framework.request import Request
 from rest_framework.views import APIView
 
@@ -192,6 +194,19 @@ class SaveFileModelViewSet(CustomModelViewSet):
         # 递归删除空文件
         remove_empty_dir(os.path.join(settings.MEDIA_ROOT, 'system'))
         return SuccessResponse(msg=f"成功清理废弃文件{len(delete_list)}个")
+
+    def downloadFile(self, request: Request):
+        filePath = os.path.abspath(settings.BASE_DIR + request.data.get('filePath'))
+        fileName = request.data.get('fileName')
+
+        # print(os.path.abspath(settings.BASE_DIR + request.data.get('filePath')))
+        # print(os.path.abspath(fileUrl))
+        # print(os.path.join(settings.BASE_DIR, fileUrl))
+        file = open(filePath, 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="%s"' % fileName
+        return response
 
 
 class MessagePushModelViewSet(CustomModelViewSet):

@@ -46,6 +46,8 @@ urlpatterns = [
     re_path('celery_log/clean/', CeleryLogModelViewSet.as_view({'delete': 'clean_all', })),
     # 导出定时日志
     re_path('celery_log/export/', CeleryLogModelViewSet.as_view({'get': 'export', })),
+    # 文件下载
+    re_path('savefile/downloadFile/', SaveFileModelViewSet.as_view({'post': 'downloadFile', })),
     # 清除废弃文件
     re_path('clearsavefile/', SaveFileModelViewSet.as_view({'post': 'clearsavefile', })),
     # 获取系统信息cpu、内存、硬盘

@@ -35,7 +35,7 @@ class QuestionsModelViewSet(CustomModelViewSet):
     # 已创建时间进行数据的排序
     ordering = ['-create_datetime']
 
-    def send_text(self, request: Request):
+    def send_email(self, request: Request):
         # 从url中获取参数
         ID = request.data.get('questionId')
         receiveList = request.data.get('receiveList')
@@ -156,7 +156,7 @@ class QuestionsModelViewSet(CustomModelViewSet):
         send_mail(subject=serializer.data['question_title'], message=serializer.data['question_description'],
                   from_email=settings.EMAIL_HOST_USER, recipient_list=receiveList, html_message=email_message)
 
-        return SuccessResponse()
+        return SuccessResponse(msg='邮件已发送成功！')
 
 
 class QLModelViewSet(CustomModelViewSet):
