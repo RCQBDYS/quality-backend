@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = ')ns9h-%fl^&ro=+-vgl*b-!+a%2=tuwc#&xbpmcavj0*ufpyjh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ALLOWED_HOSTS
 
@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'apps.vadmin.monitor',
     'apps.quality',
     'apps.project',
+    'apps.sendtest',
+    'apps.qualityFollow',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +81,7 @@ ROOT_URLCONF = 'application.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

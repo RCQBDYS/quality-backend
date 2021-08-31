@@ -2,35 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>售后问题</title>
+    <title>质量管理平台</title>
 </head>
 <body>
 <div id="content">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <table width="80%" border="0" cellspacing="0" cellpadding="0" align="center">
         <tr>
             <td align="center" class="biaoti" height="60">售后问题</td>
         </tr>
         <tr>
-            <td align="right" height="25">{0}</td>
+            <td align="right" height="25">""" + serializer.data['update_datetime'] + """</td>
         </tr>
     </table>
 
-    <table width="100%" border="0" cellspacing="1" cellpadding="4" bgcolor="#cccccc" class="tabtop13" align="center">
+    <table width="80%" border="0" cellspacing="1" cellpadding="4" bgcolor="#cccccc" class="tabtop13" align="center">
         <tr>
             <td colspan="2" class="btbg font-center titfont">问题主题</td>
-            <td colspan="10">{1}</td>
+            <td colspan="4">""" + serializer.data['question_title'] + """</td>
+            <td colspan="2" class="btbg font-center titfont">责任人</td>
+            <td colspan="4">""" + serializer.data['duty_person'] + """</td>
         </tr>
         <tr>
-            <td colspan="2" class="btbg font-center titfont">创建时间</td>
-            <td colspan="4">{2}</td>
+            <td colspan="2" class="btbg font-center titfont">发生时间</td>
+            <td colspan="4">""" + serializer.data['occur_time'] + """</td>
             <td colspan="2" class="btbg font-center titfont">问题来源</td>
-            <td colspan="4">{4}</td>
+            <td colspan="4">""" + serializer.data['question_origin'] + """</td>
         </tr>
         <tr>
-            <td colspan="2" rowspan="5" class="btbg font-center titfont">问题描述</td>
-            <td colspan="10" rowspan="5">{5}</td>
+            <td colspan="2" class="btbg font-center titfont">问题描述</td>
+            <td colspan="10">""" + serializer.data['question_description'] + """</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="btbg font-center titfont">问题进度</td>
+            <td colspan="10">""" + serializer.data['question_schedule'] + """</td>
         </tr>
     </table>
+    <a href=""" + href + """>点击查看详情</a>
 </div>
 </body>
 </html>
@@ -90,7 +97,6 @@
         font-size: 14px;
         padding-left: 15px;
         color: #000;
-        margin-top: 10px;
         margin-bottom: 10px;
         line-height: 20px;
     }

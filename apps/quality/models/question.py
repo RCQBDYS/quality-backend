@@ -1,5 +1,5 @@
 from ...vadmin.op_drf.models import CoreModel
-from django.db.models import CharField, IntegerField, DateTimeField, TextField
+from django.db.models import CharField, IntegerField, DateField, TextField
 
 
 class Questions(CoreModel):
@@ -15,7 +15,7 @@ class Questions(CoreModel):
     # 责任科室
     duty_office_id = IntegerField(verbose_name='科室id', help_text='科室id', null=True, blank=True)
     duty_person = CharField(max_length=8, verbose_name='责任人', help_text='责任人')
-    occur_time = DateTimeField(verbose_name='发生时间', help_text='发生时间')
+    occur_time = DateField(verbose_name='发生时间', help_text='发生时间')
     number = IntegerField(verbose_name='故障数量', help_text='故障数量', null=True, blank=True)
     question_level = CharField(max_length=8, verbose_name='重要程度', help_text='重要程度', blank=True)
     question_origin = CharField(max_length=8, verbose_name='问题来源', help_text='问题来源', blank=True)

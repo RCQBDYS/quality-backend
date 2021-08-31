@@ -7,8 +7,12 @@ from .models import QuestionLevel
 
 
 class QuestionsFilter(django_filters.rest_framework.FilterSet):
-
+    # 控制搜索时搜索方式：模糊还是准确
     question_title = django_filters.CharFilter(lookup_expr='icontains')
+    machine_category = django_filters.CharFilter(lookup_expr='icontains')
+    question_description = django_filters.CharFilter(lookup_expr='icontains')
+    duty_person = django_filters.CharFilter(lookup_expr='icontains')
+    question_slender = django_filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = Questions
@@ -16,7 +20,6 @@ class QuestionsFilter(django_filters.rest_framework.FilterSet):
 
 
 class QuestionBroadFilter(django_filters.rest_framework.FilterSet):
-    question_name = django_filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = QuestionBroad
@@ -24,7 +27,6 @@ class QuestionBroadFilter(django_filters.rest_framework.FilterSet):
 
 
 class QuestionLevelFilter(django_filters.rest_framework.FilterSet):
-    question_level = django_filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = QuestionLevel
@@ -32,7 +34,6 @@ class QuestionLevelFilter(django_filters.rest_framework.FilterSet):
 
 
 class QuestionOriginFilter(django_filters.rest_framework.FilterSet):
-    question_origin = django_filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
         model = QuestionOrigin

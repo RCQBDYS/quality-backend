@@ -11,7 +11,7 @@ class CustomModelSerializer(ModelSerializer):
     """
     增强DRF的ModelSerializer,可自动更新模型的审计字段记录
     (1)仅当op_drf.generics.GenericAPIView的子类里使用时有效
-    (2)非op_drf.generics.GenericAPIView里使用时, 与ModelSerializer作用一样,没人任何增强
+    (2)非op_drf.generics.GenericAPIView里使用时, 与ModelSerializer作用一样,没有任何增强
     (3)self.request能获取到rest_framework.request.Request对象
     """
     # 修改人的审计字段名称, 默认modifier, 继承使用时可自定义覆盖

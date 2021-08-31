@@ -7,7 +7,7 @@ from ...op_drf.models import CoreModel
 class Dept(CoreModel):
     deptName = CharField(max_length=64, verbose_name="部门名称")
     orderNum = IntegerField(verbose_name="显示排序")
-    owner = CharField(max_length=32, verbose_name="负责人", null=True, blank=True)
+    leader = CharField(max_length=32, verbose_name="负责人", null=True, blank=True)
     phone = CharField(max_length=32, verbose_name="联系电话", null=True, blank=True)
     email = CharField(max_length=32, verbose_name="邮箱", null=True, blank=True)
     status = CharField(max_length=8, verbose_name="部门状态", null=True, blank=True)

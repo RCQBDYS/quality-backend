@@ -1,7 +1,6 @@
 from django.urls import re_path
 from rest_framework.routers import DefaultRouter
 
-from . import views
 from .views import QuestionsModelViewSet, QLModelViewSet, QBModelViewSet, QOModelViewSet
 
 router = DefaultRouter()

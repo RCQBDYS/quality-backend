@@ -44,4 +44,6 @@ urlpatterns = [
     re_path(r'^admin/', include('apps.vadmin.urls')),
     re_path(r'^quality/', include('apps.quality.urls')),
     re_path(r'^project/', include('apps.project.urls')),
+    re_path(r'^sendtest/', include('apps.sendtest.urls')),
+    re_path(r'^qualityFollow/', include('apps.qualityFollow.urls')),
 ]

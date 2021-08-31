@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>质量问题</title>
+    <style>
+        .main-content {
+            padding-top: 40px;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        }
+
+        .div-customer {
+            padding-bottom: 20px;
+        }
+
+        .span-customer {
+            font-size: larger;
+        }
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #5bc0de;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="main-content">
+    <div class="div-customer">
+        <span class="span-customer">{{ userOne }}:</span>
+    </div>
+    <div class="div-customer" style="padding-left: 50px">
+        <table id="customers">
+            <tr>
+                <th>操作</th>
+                <th>问题主题</th>
+                <th>发生时间</th>
+                <th>问题来源</th>
+                <th>问题描述</th>
+                <th>责任科室</th>
+                <th>责任人</th>
+                <th>跟进人</th>
+                <th>下单人</th>
+                <th>下单时间</th>
+                <th>最新进度</th>
+            </tr>
+            <tr>
+                <td><a href="{{ url }}">查看</a></td>
+                <td>{{ quesTitle }}</td>
+                <td>{{ occurTime }}</td>
+                <td>{{ questionOrigin }}</td>
+                <td>{{ quesDescription }}</td>
+                <td>{{ officeName }}</td>
+                <td>{{ resName }}</td>
+                <td>{{ followName }}</td>
+                <td>{{ submitterName }}</td>
+                <td>{{ create_datetime }}</td>
+                <td>{{ dailyFollow }}</td>
+            </tr>
+        </table>
+    </div>
+    <div align="right">
+        <span>{{ userTow }}</span>
+    </div>
+</div>
+</body>
+</html>

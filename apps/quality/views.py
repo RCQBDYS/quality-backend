@@ -16,6 +16,7 @@ from django.core.mail import send_mail
 from apps.vadmin.utils.response import SuccessResponse
 
 
+
 class QuestionsModelViewSet(CustomModelViewSet):
     queryset = Questions.objects.all()
     # 序列化器
@@ -26,12 +27,12 @@ class QuestionsModelViewSet(CustomModelViewSet):
     # 过滤器
     filter_class = QuestionsFilter
     # 判断用户是否拥有这条数据的权限
-    extra_filter_backends = [DataLevelPermissionsFilter]
+    extra_ = [DataLevelPermissionsFilter]
     update_extra_permission_classes = (CommonPermission,)
     destroy_extra_permission_classes = (CommonPermission,)
     create_extra_permission_classes = (CommonPermission,)
     # 搜索
-    search_field_data = 'question_title'
+    search_fields = ('question_title', 'machine_category', 'question_description', 'duty_person', 'question_slender')
     # 已创建时间进行数据的排序
     ordering = ['-create_datetime']
 
@@ -43,17 +44,13 @@ class QuestionsModelViewSet(CustomModelViewSet):
         # 根据id值查询具体信息
         instance = self.queryset.get(id=ID)
         serializer = self.get_serializer(instance)
-        print(receiveList)
         # 发送html格式内容
-        # html_name = 'email.html'
-        # email_html = loader.get_template(html_name)
-        # html_content = email_html.render(content)
         email_message = """
         <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>售后问题</title>
+    <title>质量管理平台</title>
 </head>
 <body>
 <div id="content">
@@ -62,7 +59,7 @@ class QuestionsModelViewSet(CustomModelViewSet):
             <td align="center" class="biaoti" height="60">售后问题</td>
         </tr>
         <tr>
-            <td align="right" height="25">""" + serializer.data['create_datetime'] + """</td>
+            <td align="right" height="25">""" + serializer.data['update_datetime'] + """</td>
         </tr>
     </table>
 
@@ -74,21 +71,21 @@ class QuestionsModelViewSet(CustomModelViewSet):
             <td colspan="4">""" + serializer.data['duty_person'] + """</td>
         </tr>
         <tr>
-            <td colspan="2" class="btbg font-center titfont">创建时间</td>
+            <td colspan="2" class="btbg font-center titfont">发生时间</td>
             <td colspan="4">""" + serializer.data['occur_time'] + """</td>
             <td colspan="2" class="btbg font-center titfont">问题来源</td>
             <td colspan="4">""" + serializer.data['question_origin'] + """</td>
         </tr>
         <tr>
-            <td colspan="2" rowspan="5" class="btbg font-center titfont">问题描述</td>
-            <td colspan="10" rowspan="5">""" + serializer.data['question_description'] + """</td>
+            <td colspan="2"  class="btbg font-center titfont">问题描述</td>
+            <td colspan="10">""" + serializer.data['question_description'] + """</td>
         </tr>
         <tr>
-            <td colspan="2" rowspan="5" class="btbg font-center titfont">问题进度</td>
-            <td colspan="10" rowspan="5">""" + serializer.data['question_schedule'] + """</td>
+            <td colspan="2"  class="btbg font-center titfont">问题进度</td>
+            <td colspan="10">""" + serializer.data['question_schedule'] + """</td>
         </tr>
     </table>
-    <span>详情请见""" + href + """</span>
+    <a href=""" + href + """>点击查看详情</a>
 </div>
 </body>
 </html>
@@ -153,6 +150,7 @@ class QuestionsModelViewSet(CustomModelViewSet):
     }
 </style>
         """
+        # 参数主题、邮件正文、邮件发送人、邮件接收人、html页面
         send_mail(subject=serializer.data['question_title'], message=serializer.data['question_description'],
                   from_email=settings.EMAIL_HOST_USER, recipient_list=receiveList, html_message=email_message)
 
